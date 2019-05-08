@@ -1,5 +1,5 @@
 {
-    "name": "justmd5/pinduoduo-sdk",
+    "name": "javalaw/pinduoduo-sdk",
     "description": "拼多多API SDK【拼多多开放平台】.",
     "type": "library",
     "license": "MIT",
@@ -13,8 +13,8 @@
     ],
     "authors": [
         {
-            "name": "丁海军",
-            "email": "heyjun2012@gmail.com"
+            "name": "javalaw",
+            "email": "javalaw2010@gmail.com"
         }
     ],
     "autoload": {
