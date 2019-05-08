@@ -67,7 +67,7 @@ class Api extends AbstractAPI
         $response = call_user_func_array([$http, 'post'], [self::URL, $params]);
         $responseBody = strval($response->getBody());
 
-        return strtolower($data_type) == 'json' ? json_decode($responseBody, true) : $responseBody;
+        return $this->transResponseType($responseBody);
     }
 
     /**
@@ -87,5 +87,22 @@ class Api extends AbstractAPI
         });
 
         return $params;
+    }
+
+    /**
+     * @param string $response
+     * @return mixed
+     */
+    protected function transResponseType(string $response)
+    {
+        $responseType = strtolower($this->pinduoduo->getConfig('response_type') ?? 'array');
+        switch ($responseType) {
+            case 'array':
+                return json_decode($response, true);
+            case 'object':
+                return json_decode($response);
+            default:
+                return $response;
+        }
     }
 }
